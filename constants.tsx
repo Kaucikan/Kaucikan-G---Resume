@@ -24,7 +24,7 @@ export const PERSONAL_INFO = {
   email: "gkaucikan@gmail.com",
   phone: "+91 99527 20372",
   location: "Hosur, Tamil Nadu, India",
-  linkedin: "https://www.linkedin.com/in/kaucikan-g",
+  linkedin: "https://www.linkedin.com/in/kaucikan-g-2434a5296/",
   github: "https://github.com/Kaucikan",
   summary: "Motivated computer science student with hands-on experience in Python backend development using Django, SQL, and MongoDB. Strong understanding of REST APIs, backend logic, and database management. Seeking an entry-level backend or internship role to apply technical skills in real-world applications."
 };
