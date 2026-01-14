@@ -269,7 +269,7 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-slate-900 text-center text-slate-500 text-sm">
         <div className="max-w-7xl mx-auto">
-          <p>© {new Date().getFullYear()} Kaucikan G. Built with React & Gemini AI.</p>
+          <p>© {new Date().getFullYear()} Kaucikan G.</p>
         </div>
       </footer>
 
