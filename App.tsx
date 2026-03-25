@@ -5,8 +5,11 @@ import {
   Mail, 
   Phone, 
   MapPin, 
+  Terminal, 
   ChevronRight, 
   ExternalLink,
+  Code2,
+  Calendar,
   Award
 } from 'lucide-react';
 
@@ -42,29 +45,27 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 px-6 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-          Architecting the <br />
-          <span className="bg-gradient-to-r from-blue-400 via-emerald-400 to-indigo-500 bg-clip-text text-transparent">
-            Backbone of the Web
-          </span>
-        </h1>
+      <section className="relative pt-40 pb-20 px-6 overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] pointer-events-none opacity-20">
+          <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600 rounded-full blur-[120px] animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-emerald-600 rounded-full blur-[120px] animate-pulse"></div>
+        </div>
 
-        <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
-          I'm a passionate Computer Science student specializing in building robust backend systems.
-        </p>
+        <div className="max-w-5xl mx-auto relative z-10 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Architecting the <br />
+            <span className="bg-gradient-to-r from-blue-400 via-emerald-400 to-indigo-500 bg-clip-text text-transparent">
+              Backbone of the Web
+            </span>
+          </h1>
 
-        <div className="flex flex-wrap justify-center gap-4">
-          <a href={PERSONAL_INFO.github} target="_blank" className="px-8 py-4 bg-white text-slate-950 rounded-2xl font-bold flex items-center gap-2">
-            <Github /> Github
-          </a>
-          <a href="#contact" className="px-8 py-4 bg-slate-900 border border-slate-800 rounded-2xl font-bold flex items-center gap-2">
-            Contact <ChevronRight />
-          </a>
+          <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12">
+            I'm a passionate Computer Science student specializing in backend systems.
+          </p>
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Skills Section */}
       <section id="about" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionHeading title="Tech Arsenal" />
@@ -74,7 +75,7 @@ const App: React.FC = () => {
                 <h3 className="text-xl font-bold mb-4">{skill.category}</h3>
                 <div className="flex flex-wrap gap-2">
                   {skill.items.map((item, j) => (
-                    <span key={j} className="px-3 py-1 rounded-full bg-slate-800 text-xs">
+                    <span key={j} className="px-3 py-1 bg-slate-800 text-xs rounded">
                       {item}
                     </span>
                   ))}
@@ -87,13 +88,13 @@ const App: React.FC = () => {
 
       {/* Education & Experience */}
       <section className="py-24 px-6 bg-slate-900/20">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
 
           <div>
             <SectionHeading title="Education" />
             <h3 className="text-2xl font-bold">{EDUCATION.degree}</h3>
             <p className="text-slate-400">{EDUCATION.institution}</p>
-            <div className="mt-4 flex items-center gap-2 text-emerald-400">
+            <div className="mt-4 text-emerald-400 flex items-center gap-2">
               <Award /> CGPA: {EDUCATION.cgpa}
             </div>
           </div>
@@ -101,10 +102,10 @@ const App: React.FC = () => {
           <div id="experience">
             <SectionHeading title="Experience" />
             {EXPERIENCES.map((exp, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-slate-900 border border-slate-800 mb-6">
+              <div key={i} className="p-8 bg-slate-900 rounded-3xl border border-slate-800 mb-6">
                 <h3 className="text-xl font-bold">{exp.role}</h3>
                 <p className="text-blue-400">{exp.company}</p>
-                <ul className="mt-3 text-sm text-slate-400 space-y-2">
+                <ul className="mt-2 text-sm text-slate-400">
                   {exp.details.map((d, j) => (
                     <li key={j}>• {d}</li>
                   ))}
@@ -116,7 +117,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* ✅ UPDATED PROJECT SECTION (ONLY CHANGE) */}
+      {/* ✅ UPDATED PROJECT SECTION ONLY */}
       <section id="projects" className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <SectionHeading 
@@ -133,19 +134,20 @@ const App: React.FC = () => {
               </div>
 
               <div className="p-10">
-                <div className="flex gap-2 mb-6 flex-wrap">
+                <div className="flex gap-2 mb-6">
                   {["Python", "YOLOv8", "OpenCV", "Deep Learning"].map((t, i) => (
-                    <span key={i} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                    <span key={i} className="px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-full text-[10px] font-bold uppercase">
                       {t}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-2xl font-bold mb-4">PPE Violation Detection System</h3>
+                <h3 className="text-2xl font-bold mb-4">PPE Violation Detection</h3>
 
-                <p className="text-slate-400 text-sm mb-6">
-                  AI system detecting helmet & safety violations using YOLOv8 in real-time.
-                </p>
+                <div className="space-y-2 mb-6 text-sm text-slate-400">
+                  <p>Real-time AI detection of helmet and safety violations.</p>
+                  <p>Built using YOLOv8 and OpenCV.</p>
+                </div>
 
                 <button className="flex items-center gap-2 text-sm font-bold hover:text-blue-400">
                   View Details <ExternalLink />
@@ -160,9 +162,9 @@ const App: React.FC = () => {
               </div>
 
               <div className="p-10">
-                <div className="flex gap-2 mb-6 flex-wrap">
+                <div className="flex gap-2 mb-6">
                   {["ESP32", "IoT", "Sensors", "Cloud"].map((t, i) => (
-                    <span key={i} className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                    <span key={i} className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 rounded-full text-[10px] font-bold uppercase">
                       {t}
                     </span>
                   ))}
@@ -170,9 +172,10 @@ const App: React.FC = () => {
 
                 <h3 className="text-2xl font-bold mb-4">Eco Shield</h3>
 
-                <p className="text-slate-400 text-sm mb-6">
-                  Smart IoT system for monitoring environmental conditions with real-time analytics.
-                </p>
+                <div className="space-y-2 mb-6 text-sm text-slate-400">
+                  <p>IoT system for monitoring environmental conditions.</p>
+                  <p>Real-time data using ESP32 and sensors.</p>
+                </div>
 
                 <button className="flex items-center gap-2 text-sm font-bold hover:text-emerald-400">
                   View Details <ExternalLink />
@@ -183,22 +186,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact */}
-      <section id="contact" className="py-32 px-6 text-center">
-        <SectionHeading title="Let's Connect" />
-
-        <div className="flex justify-center gap-8 mt-10">
-          <a href={`mailto:${PERSONAL_INFO.email}`}><Mail /></a>
-          <a href={PERSONAL_INFO.linkedin}><Linkedin /></a>
-          <a href={`tel:${PERSONAL_INFO.phone}`}><Phone /></a>
-          <MapPin />
-        </div>
-      </section>
-
-      <footer className="py-10 text-center text-slate-500">
-        © {new Date().getFullYear()} Kaucikan G
-      </footer>
 
       <ChatWidget />
     </div>
